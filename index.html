@@ -304,46 +304,80 @@
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
+      gap: 0;
       margin-top: 3rem;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent), var(--accent), transparent);
+      opacity: 0.25;
     }
 
     .step {
-      text-align: left;
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
     }
 
-    .step-num {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.4;
-      line-height: 1;
-      margin-bottom: 0.75rem;
+    .step-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: var(--accent-glow);
+      border: 1px solid rgba(152, 16, 250, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .step h3 {
       font-family: var(--font-heading);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
 
     .step p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     @media (max-width: 768px) {
       .steps {
         grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 0;
+      }
+      .steps::before {
+        display: none;
       }
     }
 
     @media (max-width: 480px) {
       .steps {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .step {
+        padding: 0;
       }
     }
 
@@ -1363,28 +1397,27 @@
     <!-- How It Works -->
     <section id="how-it-works">
       <div class="how-it-works">
-        <div class="section-label">The Process</div>
         <h2 class="section-title">How therapy becomes tangible.</h2>
         <div class="steps">
           <div class="step">
-            <div class="step-num">01</div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 18.5A6.5 6.5 0 0 0 18.5 12 6.5 6.5 0 0 0 12 5.5M12 18.5A6.5 6.5 0 0 1 5.5 12 6.5 6.5 0 0 1 12 5.5M12 18.5V22M12 5.5V2M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg></div>
             <h3>Share</h3>
-            <p>The patient tells their story in session. Audio is recorded and transcribed.</p>
+            <p>The patient tells their story in session. StoryCare records and transcribes it.</p>
           </div>
           <div class="step">
-            <div class="step-num">02</div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
             <h3>Shape</h3>
-            <p>The therapist reviews the transcript, selects key moments, and guides what the platform generates.</p>
+            <p>The therapist selects key moments and guides what the platform generates.</p>
           </div>
           <div class="step">
-            <div class="step-num">03</div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
             <h3>Create</h3>
-            <p>StoryCare generates images, video, and original music from the session. Each Story Page is unique.</p>
+            <p>StoryCare generates images, video, and original music. Each Story Page is unique.</p>
           </div>
           <div class="step">
-            <div class="step-num">04</div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
             <h3>Respond</h3>
-            <p>The patient receives their Story Page and engages with reflection prompts and outcome surveys between sessions.</p>
+            <p>The patient receives their Story Page and engages with reflection prompts and surveys between sessions.</p>
           </div>
         </div>
       </div>
