@@ -211,6 +211,15 @@
       margin-bottom: 1.5rem;
     }
 
+    .hero-problem {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: var(--text-primary);
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto 1rem;
+      opacity: 0.9;
+    }
+
     .hero p {
       font-size: clamp(1rem, 2vw, 1.15rem);
       color: var(--text-secondary);
@@ -257,6 +266,48 @@
 
     .btn-ghost:hover {
       color: var(--text-primary);
+    }
+
+    /* ---- TRUST BAR ---- */
+    .trust-bar {
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+    }
+
+    .trust-bar-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.02em;
+    }
+
+    .trust-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent);
+      opacity: 0.7;
+    }
+
+    @media (max-width: 520px) {
+      .trust-bar-inner {
+        gap: 1.25rem;
+      }
+      .trust-item {
+        font-size: 0.75rem;
+      }
     }
 
     /* ---- SECTIONS ---- */
@@ -1201,6 +1252,75 @@
       }
     }
 
+    /* ---- FAQ ---- */
+    .faq-section {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-section .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 0;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-question:hover {
+      color: var(--accent);
+    }
+
+    .faq-question svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      stroke: var(--text-tertiary);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 1.25rem;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
     /* ---- RESEARCH & CONTACT ---- */
     .research-section {
       max-width: 800px;
@@ -1289,6 +1409,14 @@
 
     .conference-note a:hover {
       text-decoration: underline;
+    }
+
+    .evidence-line {
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+      margin-top: 2rem;
+      line-height: 1.6;
+      font-style: italic;
     }
 
     .hipaa-line {
@@ -1386,38 +1514,58 @@
       <div class="hero-content">
         <div class="hero-label">Digital Narrative Exposure Therapy</div>
         <h1>Stories made visible. Progress made measurable.</h1>
-        <p>StoryCare is a clinician-guided digital therapeutic that turns what patients share in therapy into images, videos, and music they keep and build on between sessions.</p>
+        <p class="hero-problem">What patients share in therapy is powerful — but it stays internal. There's no way to see it, hold it, or return to it.</p>
+        <p>StoryCare changes that. It turns what someone shares into images, music, and film they keep — co-created with their therapist, built from their own words.</p>
         <div class="hero-ctas">
           <a href="#how-it-works" class="btn-primary">Learn More</a>
-          <a href="#research" class="btn-ghost">Get in Touch &rarr;</a>
+          <a href="#research" class="btn-ghost">Request Access &rarr;</a>
         </div>
       </div>
     </section>
 
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>HIPAA Compliant</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+          <span>Clinician-Controlled</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>In Clinical Evaluation</span>
+        </div>
+      </div>
+    </div>
+
     <!-- How It Works -->
     <section id="how-it-works">
       <div class="how-it-works">
-        <h2 class="section-title">How therapy becomes tangible.</h2>
+        <h2 class="section-title">From session to Story Page.</h2>
+        <p class="section-subtitle" style="margin: 0 auto 0.5rem; text-align: center;">Something the patient keeps, returns to, and builds on.</p>
         <div class="steps">
           <div class="step">
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 18.5A6.5 6.5 0 0 0 18.5 12 6.5 6.5 0 0 0 12 5.5M12 18.5A6.5 6.5 0 0 1 5.5 12 6.5 6.5 0 0 1 12 5.5M12 18.5V22M12 5.5V2M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg></div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
             <h3>Share</h3>
-            <p>The patient tells their story in session. StoryCare records and transcribes it.</p>
+            <p>The patient tells their story. StoryCare captures the session — audio, transcript, and speaker identity.</p>
           </div>
           <div class="step">
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></div>
             <h3>Shape</h3>
-            <p>The therapist selects key moments and guides what the platform generates.</p>
+            <p>The therapist reviews the transcript, selects the moments that matter, and guides what the platform will create.</p>
           </div>
           <div class="step">
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <h3>Create</h3>
-            <p>StoryCare generates images, video, and original music. Each Story Page is unique.</p>
+            <p>StoryCare renders images, video, and original music from the session. Every Story Page is unique to what was shared.</p>
           </div>
           <div class="step">
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
             <h3>Respond</h3>
-            <p>The patient receives their Story Page and engages with reflection prompts and surveys between sessions.</p>
+            <p>The patient receives their Story Page and engages between sessions — with reflection prompts, surveys, and the media itself.</p>
           </div>
         </div>
       </div>
@@ -1706,14 +1854,54 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="faq-section">
+        <h2 class="section-title">Common questions.</h2>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Does StoryCare replace the therapist?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">No. The therapist runs the session, reviews the transcript, selects what matters, and decides what the platform creates. StoryCare is a tool in the clinician's hands, not a substitute for clinical judgment.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Is patient data safe?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">StoryCare is HIPAA-compliant with end-to-end encryption, role-based access, and audit logging. Audio, transcripts, and generated media are stored securely and never used to train AI models.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Who can use StoryCare?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">StoryCare is currently in clinical evaluation and available to clinicians and researchers interested in early adoption. It's designed for residential, outpatient, and community settings working with group or individual therapy.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            What does the patient actually see?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">The patient receives a Story Page on their phone with a short video, original music, images, reflection prompts, and survey questions. Everything is generated from what they shared in session and curated by their therapist.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Does it only work with DNET?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">DNET is the default protocol, but the platform is extensible to other structured therapeutic approaches. The core capabilities — transcription, media generation, Story Pages, and outcome tracking — can support a range of clinical frameworks.</div></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Research & Contact -->
     <section id="research">
       <div class="research-section">
         <div class="section-label">Research &amp; Access</div>
-        <h2 class="section-title">Currently in trial. Open to clinicians.</h2>
-        <p class="section-subtitle">StoryCare is currently in clinical trial at a residential treatment facility working with patients with serious mental illness. The platform is designed for residential, outpatient, and community settings, and is built to scale across populations, therapeutic approaches, and treatment modules.</p>
-        <p class="hipaa-line">StoryCare is HIPAA-compliant with end-to-end encryption. Your patients' data is secure at every step.</p>
-        <p class="section-subtitle" style="margin: 1.5rem auto 0">If you're a clinician, researcher, or organization interested in using it, get in touch.</p>
+        <h2 class="section-title">In clinical evaluation. Open to early adopters.</h2>
+        <p class="section-subtitle">We're working with clinicians who want to integrate structured narrative intervention into their practice. If you're running groups, individual therapy, or research — we'd like to hear from you.</p>
 
         <form class="contact-form" id="storycare-contact" novalidate>
           <div class="form-group">
@@ -1728,10 +1916,11 @@
             <label for="contact-message">Tell us about your setting or interest</label>
             <textarea id="contact-message" name="q4_message" placeholder="Clinical setting, population, research interest..." required></textarea>
           </div>
-          <button type="submit" class="btn-primary">Get in Touch</button>
+          <button type="submit" class="btn-primary">Request Access</button>
           <p class="form-status" id="form-status" style="display:none; margin-top:1rem; font-size:0.9rem;"></p>
         </form>
 
+        <p class="evidence-line">StoryCare has completed its initial pilot with group and individual therapy cycles. A structured clinical evaluation is underway.</p>
         <p class="credibility">Built with ❤️ by the team at <a href="https://shcare.com/leadership/" target="_blank" rel="noopener">Sage Health</a>.</p>
         <p class="conference-note">We'll be at <a href="https://schizophreniaresearchsociety.org/" target="_blank" rel="noopener">SIRS 2026</a> in Florence, March 25&ndash;29. This year's focus: Schizophrenia Research in the Era of Artificial Intelligence. Come say hello.</p>
       </div>
@@ -1786,7 +1975,7 @@
         status.style.display = 'block';
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Get in Touch';
+        btn.textContent = 'Request Access';
       }
     });
   </script>
