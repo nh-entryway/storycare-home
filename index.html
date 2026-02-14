@@ -1479,14 +1479,24 @@
     }
 
     .hipaa-badge {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 0.4rem;
+      background: rgba(152, 16, 250, 0.08);
+      border: 1px solid rgba(152, 16, 250, 0.2);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-primary);
     }
 
     .hipaa-badge svg {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
+      stroke: var(--accent);
     }
   </style>
 </head>
@@ -1936,8 +1946,8 @@
         <span>StoryCare</span>
       </div>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms</a>
         <span class="hipaa-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           HIPAA Compliant
