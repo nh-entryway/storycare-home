@@ -1117,39 +1117,6 @@
       display: block;
     }
 
-    .story-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1.25rem;
-      background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    }
-
-    .story-overlay h3 {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .story-overlay p {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
-    .stories-note {
-      font-size: 0.85rem;
-      color: var(--text-tertiary);
-      font-style: italic;
-      margin-top: 2rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
     @media (max-width: 900px) {
       .stories-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1677,49 +1644,24 @@
         <p class="section-subtitle" style="margin:0 auto">Loss, recovery, identity, change. Each image was generated through StoryCare from real sessions during a clinical pilot.</p>
         <div class="stories-grid">
           <div class="story-card">
-            <img src="images/story-1.jpg" alt="Story: The Weight I Carry" loading="lazy">
-            <div class="story-overlay">
-              <h3>The Weight I Carry</h3>
-              <p>A body heavy with years of holding on</p>
-            </div>
+            <img src="images/story-1.jpg" alt="AI-generated image from a therapy session" loading="lazy">
           </div>
           <div class="story-card">
-            <img src="images/story-2.jpg" alt="Story: Before the Fire" loading="lazy">
-            <div class="story-overlay">
-              <h3>Before the Fire</h3>
-              <p>A home that no longer exists except in memory</p>
-            </div>
+            <img src="images/story-2.jpg" alt="AI-generated image from a therapy session" loading="lazy">
           </div>
           <div class="story-card">
-            <img src="images/story-3.jpg" alt="Story: Through the Glass" loading="lazy">
-            <div class="story-overlay">
-              <h3>Through the Glass</h3>
-              <p>Watching life happen from the other side</p>
-            </div>
+            <img src="images/story-3.jpg" alt="AI-generated image from a therapy session" loading="lazy">
           </div>
           <div class="story-card">
-            <img src="images/story-4.jpg" alt="Story: What They Don't See" loading="lazy">
-            <div class="story-overlay">
-              <h3>What They Don't See</h3>
-              <p>The invisible labor of surviving each day</p>
-            </div>
+            <img src="images/story-4.jpg" alt="AI-generated image from a therapy session" loading="lazy">
           </div>
           <div class="story-card">
-            <img src="images/story-5.jpg" alt="Story: Roots" loading="lazy">
-            <div class="story-overlay">
-              <h3>Roots</h3>
-              <p>Where I come from and what I left behind</p>
-            </div>
+            <img src="images/story-5.jpg" alt="AI-generated image from a therapy session" loading="lazy">
           </div>
           <div class="story-card">
-            <img src="images/story-6.jpg" alt="Story: First Light" loading="lazy">
-            <div class="story-overlay">
-              <h3>First Light</h3>
-              <p>The morning everything started to shift</p>
-            </div>
+            <img src="images/story-6.jpg" alt="AI-generated image from a therapy session" loading="lazy">
           </div>
         </div>
-        <p class="stories-note">These images were generated during a live clinical pilot. Each one began with something a patient said in session, shaped by their therapist, and rendered by the platform.</p>
       </div>
     </section>
 
@@ -1758,20 +1700,21 @@
         <p class="hipaa-line">StoryCare is HIPAA-compliant with end-to-end encryption. Your patients' data is secure at every step.</p>
         <p class="section-subtitle" style="margin: 1.5rem auto 0">If you're a clinician, researcher, or organization interested in using it, get in touch.</p>
 
-        <form class="contact-form" onsubmit="return false;">
+        <form class="contact-form" id="storycare-contact" novalidate>
           <div class="form-group">
             <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" name="name" placeholder="Your name" autocomplete="name">
+            <input type="text" id="contact-name" name="q2_fullName" placeholder="Your name" autocomplete="name" required>
           </div>
           <div class="form-group">
             <label for="contact-email">Email</label>
-            <input type="email" id="contact-email" name="email" placeholder="you@example.com" autocomplete="email">
+            <input type="email" id="contact-email" name="q3_emailAddress" placeholder="you@example.com" autocomplete="email" required>
           </div>
           <div class="form-group">
             <label for="contact-message">Tell us about your setting or interest</label>
-            <textarea id="contact-message" name="message" placeholder="Clinical setting, population, research interest..."></textarea>
+            <textarea id="contact-message" name="q4_message" placeholder="Clinical setting, population, research interest..." required></textarea>
           </div>
           <button type="submit" class="btn-primary">Get in Touch</button>
+          <p class="form-status" id="form-status" style="display:none; margin-top:1rem; font-size:0.9rem;"></p>
         </form>
 
         <p class="credibility">Built by Noah Hendler, PMHNP/FNP, and the team at <a href="https://shcare.com/leadership/" target="_blank" rel="noopener">Sage Health</a>.</p>
@@ -1797,5 +1740,40 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('storycare-contact').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById('form-status');
+      const btn = form.querySelector('button[type="submit"]');
+
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      status.style.display = 'none';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('https://submit.jotform.com/submit/260444105747051', {
+          method: 'POST',
+          body: data,
+          mode: 'no-cors'
+        });
+        status.textContent = 'Thank you! We'll be in touch soon.';
+        status.style.color = '#9810FA';
+        status.style.display = 'block';
+        form.reset();
+      } catch (err) {
+        status.textContent = 'Something went wrong. Please try again.';
+        status.style.color = '#ff6b6b';
+        status.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Get in Touch';
+      }
+    });
+  </script>
 </body>
 </html>
