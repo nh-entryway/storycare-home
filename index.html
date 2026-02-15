@@ -1617,6 +1617,26 @@
       height: 14px;
       stroke: var(--accent);
     }
+
+    /* Scroll-triggered fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-child {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in-child.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -1644,7 +1664,7 @@
       <div class="hero-content">
         <div class="hero-label">Digital Narrative Therapy</div>
         <h1>StoryCare turns what someone shares in therapy into images, music, and video.</h1>
-        <p>From a single session, the platform generates personalized media the patient can reflect on between sessions. The therapist controls everything. Progress becomes visible and measurable.</p>
+        <p>From a single session, the platform generates personalized media the patient can reflect on between sessions. The therapist controls everything. <strong>Progress becomes visible and measurable.</strong></p>
         <div class="hero-ctas">
           <a href="#how-it-works" class="btn-primary">See How It Works</a>
           <a href="#research" class="btn-ghost">Join the Pilot &rarr;</a>
@@ -1672,26 +1692,26 @@
 
     <!-- How It Works -->
     <section id="how-it-works">
-      <div class="how-it-works">
+      <div class="how-it-works fade-in">
         <h2 class="section-title">From session to Story Page.</h2>
         <p class="section-subtitle" style="margin: 0 auto 0.5rem; text-align: center;">Something the patient keeps, returns to, and builds on.</p>
         <div class="steps">
-          <div class="step">
+          <div class="step fade-in-child">
             <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
             <h3>Share</h3>
             <p>The patient tells their story. StoryCare captures the session — audio, transcript, and speaker identity.</p>
           </div>
-          <div class="step">
+          <div class="step fade-in-child">
             <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></div>
             <h3>Shape</h3>
             <p>The therapist reviews the transcript, selects the moments that matter, and guides what the platform will create.</p>
           </div>
-          <div class="step">
+          <div class="step fade-in-child">
             <div class="step-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <h3>Create</h3>
             <p>StoryCare renders images, video, and original music from the session. Every Story Page is unique to what was shared.</p>
           </div>
-          <div class="step">
+          <div class="step fade-in-child">
             <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
             <h3>Respond</h3>
             <p>The patient receives their Story Page and engages between sessions — with reflection prompts, surveys, and the media itself.</p>
@@ -1702,7 +1722,7 @@
 
     <!-- Story Page -->
     <section id="about">
-      <div class="storypage">
+      <div class="storypage fade-in">
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
@@ -1769,10 +1789,10 @@
           <h2 class="section-title">Images, music, and reflection. Generated from the session.</h2>
           <p>Each Story Page is generated from a therapy session. It includes a short video, original music, images, reflection prompts, and survey questions. The patient receives it and engages with it between sessions.</p>
           <div class="sp-features">
-            <div class="sp-feature"><strong>AI Images + Video</strong><span>The patient sees their story reflected back visually. Something concrete to hold onto between sessions.</span></div>
-            <div class="sp-feature"><strong>Original Music</strong><span>Each story gets its own score. Patients return to it. It becomes part of their relationship with the work.</span></div>
-            <div class="sp-feature"><strong>Reflection Prompts</strong><span>Therapist-guided questions that keep the session alive between visits. Patients respond on their own time.</span></div>
-            <div class="sp-feature"><strong>Outcome Surveys</strong><span>Clinicians see how patients are responding, what they engage with, and where things shift over time.</span></div>
+            <div class="sp-feature fade-in-child"><strong>AI Images + Video</strong><span>The patient sees their story reflected back visually. Something concrete to hold onto between sessions.</span></div>
+            <div class="sp-feature fade-in-child"><strong>Original Music</strong><span>Each story gets its own score. Patients return to it. It becomes part of their relationship with the work.</span></div>
+            <div class="sp-feature fade-in-child"><strong>Reflection Prompts</strong><span>Therapist-guided questions that keep the session alive between visits. Patients respond on their own time.</span></div>
+            <div class="sp-feature fade-in-child"><strong>Outcome Surveys</strong><span>Clinicians see how patients are responding, what they engage with, and where things shift over time.</span></div>
           </div>
         </div>
       </div>
@@ -1780,7 +1800,7 @@
 
     <!-- Therapist View -->
     <section id="therapist">
-      <div class="therapist-section">
+      <div class="therapist-section fade-in">
         <div class="section-label">The Therapist's Workspace</div>
         <h2 class="section-title">Built for the clinician's workflow. Review, refine, and publish.</h2>
         <p class="section-subtitle">Clinicians document. StoryCare helps them create. From a single session, the platform generates images, video, and music that the patient takes home and engages with between visits. The therapist reviews and publishes everything.</p>
@@ -1959,25 +1979,25 @@
 
     <!-- Why It Works + How It's Different -->
     <section id="why-it-works">
-      <div class="why-section">
+      <div class="why-section fade-in">
         <div class="section-label">Why It Works</div>
         <h2 class="section-title">The media isn't the outcome. It's what makes outcomes visible.</h2>
         <p class="section-subtitle">The hardest thing about therapy is that progress happens in conversation and then disappears. StoryCare captures what matters, turns it into something the patient can return to, and measures what happens next.</p>
 
         <div class="why-grid">
-          <div class="why-block">
+          <div class="why-block fade-in-child">
             <h3>Between sessions, patients have something to come back to</h3>
             <p>AI-generated images, music, and video give patients a concrete anchor. Not homework. Not a worksheet. Something personal they choose to engage with on their own time.</p>
           </div>
-          <div class="why-block">
+          <div class="why-block fade-in-child">
             <h3>Engagement becomes measurable</h3>
             <p>When patients view their Story Page, respond to reflection prompts, or complete outcome surveys, clinicians see it. Not a guess about whether the patient "did the work" between visits. Actual signal.</p>
           </div>
-          <div class="why-block">
+          <div class="why-block fade-in-child">
             <h3>Clinicians see what's landing and what isn't</h3>
             <p>Which stories do patients revisit? Which prompts get the longest responses? Where does engagement drop? The platform surfaces patterns that inform the next session.</p>
           </div>
-          <div class="why-block">
+          <div class="why-block fade-in-child">
             <h3>The therapeutic record grows over time</h3>
             <p>Each module adds to a patient's Story Page. Over weeks and months, what started as a single session becomes a visible arc of progress. Patients see how far they've come. So do their clinicians.</p>
           </div>
@@ -1987,19 +2007,19 @@
         <p class="section-subtitle">StoryCare isn't a documentation tool, a chatbot, or a standalone app. It's a clinical platform that creates from therapy sessions and measures what patients do with what it creates.</p>
 
         <div class="diff-grid">
-          <div class="diff-item">
+          <div class="diff-item fade-in-child">
             <div class="diff-label">vs. AI Scribes</div>
             <p>Scribes document what happened. <strong>StoryCare creates from what happened.</strong> The output isn't a note for the chart. It's media the patient takes home and engages with.</p>
           </div>
-          <div class="diff-item">
+          <div class="diff-item fade-in-child">
             <div class="diff-label">vs. Digital Journaling Apps</div>
             <p>Apps like Woebot and Wysa are self-guided. <strong>StoryCare is clinician-guided.</strong> The therapist controls what gets published. The patient engages with content shaped by their treatment.</p>
           </div>
-          <div class="diff-item">
+          <div class="diff-item fade-in-child">
             <div class="diff-label">vs. Expressive Arts Therapy</div>
             <p>Expressive arts happen in session and stay there. <strong>StoryCare extends beyond the session.</strong> AI generates media from the conversation, and the patient carries it forward between visits.</p>
           </div>
-          <div class="diff-item">
+          <div class="diff-item fade-in-child">
             <div class="diff-label">vs. EHR Tools</div>
             <p>EHRs are administrative. They track billing, notes, and compliance. <strong>StoryCare is therapeutic.</strong> It tracks what patients create, engage with, and how they respond over time.</p>
           </div>
@@ -2009,7 +2029,7 @@
 
     <!-- Clinical Framework -->
     <section id="clinical">
-      <div class="clinical-section">
+      <div class="clinical-section fade-in">
         <div class="section-label">Clinical Framework</div>
         <h2 class="section-title">Grounded in evidence. Structured for scale.</h2>
         <div class="clinical-grid">
@@ -2035,7 +2055,7 @@
 
     <!-- FAQ -->
     <section id="faq">
-      <div class="faq-section">
+      <div class="faq-section fade-in">
         <h2 class="section-title">Common questions.</h2>
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
@@ -2112,7 +2132,7 @@
 
     <!-- Research & Contact -->
     <section id="research">
-      <div class="research-section">
+      <div class="research-section fade-in">
         <div class="section-label">Research &amp; Access</div>
         <h2 class="section-title">In clinical evaluation. Open to early adopters.</h2>
         <p class="section-subtitle">We're working with clinicians who believe AI can do more than automate notes. If you're running groups, individual therapy, or research — we'd like to hear from you.</p>
@@ -2223,6 +2243,24 @@
         btn.textContent = 'Talk to the Team';
       }
     });
+
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Stagger children
+          const children = entry.target.querySelectorAll('.fade-in-child');
+          children.forEach((child, i) => {
+            child.style.transitionDelay = (i * 0.1) + 's';
+            child.classList.add('visible');
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
