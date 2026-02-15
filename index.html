@@ -1361,43 +1361,33 @@
     .why-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem 3rem;
+      gap: 1.5rem;
       margin-top: 2.5rem;
     }
 
-    .why-block-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--accent-glow);
-      border: 1px solid rgba(152, 16, 250, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
+    .why-block {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.75rem 1.75rem 1.75rem 2rem;
+      border-left: 3px solid var(--accent);
+      transition: box-shadow 0.25s ease;
     }
 
-    .why-block-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--accent);
-      stroke-width: 1.5;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .why-block:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     }
 
     .why-block h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .why-block p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-secondary);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     @media (max-width: 768px) {
@@ -2139,30 +2129,18 @@
 
         <div class="why-grid">
           <div class="why-block fade-in-child">
-            <div class="why-block-icon">
-              <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </div>
             <h3>Externalization builds agency</h3>
             <p>Turning experience into narrative and image helps patients see problems as separate from identity.</p>
           </div>
           <div class="why-block fade-in-child">
-            <div class="why-block-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
             <h3>Reflection deepens integration</h3>
             <p>Revisiting structured narrative between sessions strengthens insight and memory consolidation.</p>
           </div>
           <div class="why-block fade-in-child">
-            <div class="why-block-icon">
-              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
             <h3>Symbolic media expands processing</h3>
             <p>Visual and auditory media engage emotional systems beyond verbal dialogue.</p>
           </div>
           <div class="why-block fade-in-child">
-            <div class="why-block-icon">
-              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
             <h3>Visible engagement informs care</h3>
             <p>Patterns of return, response, and reflection provide real signal for the next session.</p>
           </div>
