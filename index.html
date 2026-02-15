@@ -2157,84 +2157,87 @@
     </div>
   </footer>
 
+  <!-- Form handler (isolated so errors here never break animations) -->
   <script>
-    document.getElementById('storycare-contact').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const status = document.getElementById('form-status');
-      const btn = form.querySelector('button[type="submit"]');
+    var contactForm = document.getElementById('storycare-contact');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var form = e.target;
+        var status = document.getElementById('form-status');
+        var btn = form.querySelector('button[type="submit"]');
 
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      status.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Sending\u2026';
+        status.style.display = 'none';
 
-      try {
-        const data = new FormData(form);
-        const res = await fetch('https://submit.jotform.com/submit/260444105747051', {
-          method: 'POST',
-          body: data,
-          mode: 'no-cors'
-        });
-        status.textContent = 'Thank you! We'll be in touch soon.';
-        status.style.color = '#9810FA';
-        status.style.display = 'block';
-        form.reset();
-      } catch (err) {
-        status.textContent = 'Something went wrong. Please try again.';
-        status.style.color = '#ff6b6b';
-        status.style.display = 'block';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Talk to the Team';
-      }
-    });
-
-    // Scroll-triggered fade-in — only hide elements once JS can reveal them
-    document.documentElement.classList.add('js-fade-ready');
-
-    function revealElement(el) {
-      el.classList.add('visible');
-      var children = el.querySelectorAll('.fade-in-child');
-      for (var i = 0; i < children.length; i++) {
-        children[i].style.transitionDelay = (i * 0.1) + 's';
-        children[i].classList.add('visible');
-      }
+        try {
+          var data = new FormData(form);
+          await fetch('https://submit.jotform.com/submit/260444105747051', {
+            method: 'POST',
+            body: data,
+            mode: 'no-cors'
+          });
+          status.textContent = "Thank you! We'll be in touch soon.";
+          status.style.color = '#9810FA';
+          status.style.display = 'block';
+          form.reset();
+        } catch (err) {
+          status.textContent = 'Something went wrong. Please try again.';
+          status.style.color = '#ff6b6b';
+          status.style.display = 'block';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Talk to the Team';
+        }
+      });
     }
+  </script>
 
-    // Wait one frame so the browser applies the opacity:0 styles
-    // before we check positions — prevents getBoundingClientRect from
-    // returning stale layout values.
-    requestAnimationFrame(function() {
-      var fadeEls = document.querySelectorAll('.fade-in');
+  <!-- Scroll-triggered fade-in animations -->
+  <script>
+    (function() {
+      document.documentElement.classList.add('js-fade-ready');
 
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          for (var i = 0; i < entries.length; i++) {
-            if (entries[i].isIntersecting) {
-              revealElement(entries[i].target);
-              observer.unobserve(entries[i].target);
+      function revealElement(el) {
+        el.classList.add('visible');
+        var children = el.querySelectorAll('.fade-in-child');
+        for (var i = 0; i < children.length; i++) {
+          children[i].style.transitionDelay = (i * 0.1) + 's';
+          children[i].classList.add('visible');
+        }
+      }
+
+      requestAnimationFrame(function() {
+        var fadeEls = document.querySelectorAll('.fade-in');
+
+        if ('IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function(entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (entries[i].isIntersecting) {
+                revealElement(entries[i].target);
+                observer.unobserve(entries[i].target);
+              }
+            }
+          }, { threshold: 0.15 });
+
+          for (var i = 0; i < fadeEls.length; i++) {
+            var rect = fadeEls[i].getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+              revealElement(fadeEls[i]);
+            } else {
+              observer.observe(fadeEls[i]);
             }
           }
-        }, { threshold: 0.02, rootMargin: '0px 0px 50px 0px' });
-
-        for (var i = 0; i < fadeEls.length; i++) {
-          // If already in viewport, reveal immediately
-          var rect = fadeEls[i].getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
+        } else {
+          for (var i = 0; i < fadeEls.length; i++) {
             revealElement(fadeEls[i]);
-          } else {
-            observer.observe(fadeEls[i]);
           }
         }
-      } else {
-        // Fallback: no IntersectionObserver, reveal everything
-        for (var i = 0; i < fadeEls.length; i++) {
-          revealElement(fadeEls[i]);
-        }
-      }
-    });
+      });
+    })();
   </script>
 </body>
 </html>
