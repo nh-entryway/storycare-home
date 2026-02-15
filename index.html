@@ -390,23 +390,44 @@
       gap: 0;
       margin-top: 3rem;
       position: relative;
-    }
-
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: 12.5%;
-      right: 12.5%;
-      height: 2px;
-      background: var(--accent);
-      opacity: 0.18;
+      counter-reset: step-counter;
     }
 
     .step {
       text-align: center;
       padding: 0 1.5rem;
       position: relative;
+      counter-increment: step-counter;
+    }
+
+    /* Arrow connector between steps */
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      right: -12px;
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid var(--accent);
+      border-top: 2px solid var(--accent);
+      transform: rotate(45deg);
+      opacity: 0.3;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0 auto 0.75rem;
+      line-height: 1;
     }
 
     .step-icon {
@@ -449,7 +470,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem 0;
       }
-      .steps::before {
+      .step:not(:last-child)::after {
         display: none;
       }
     }
@@ -1807,21 +1828,25 @@
         <p class="section-subtitle" style="margin: 0.25rem auto 0.5rem; text-align: center;">Something the patient revisits and builds on between sessions.</p>
         <div class="steps">
           <div class="step fade-in-child">
+            <div class="step-number">1</div>
             <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
             <h3>Share</h3>
             <p>The patient tells their story. StoryCare captures audio, transcript, and speaker identity.</p>
           </div>
           <div class="step fade-in-child">
+            <div class="step-number">2</div>
             <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></div>
             <h3>Shape</h3>
             <p>The therapist selects the moments that matter and guides what gets created.</p>
           </div>
           <div class="step fade-in-child">
+            <div class="step-number">3</div>
             <div class="step-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <h3>Create</h3>
             <p>StoryCare generates images, video, and original music. Every Story Page is unique.</p>
           </div>
           <div class="step fade-in-child">
+            <div class="step-number">4</div>
             <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
             <h3>Respond</h3>
             <p>The patient engages between sessions with reflection prompts, surveys, and the media itself.</p>
