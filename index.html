@@ -1207,6 +1207,72 @@
       }
     }
 
+    /* ---- WHY IT WORKS / DIFFERENTIATION ---- */
+    .why-section {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .why-block h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .why-block p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .diff-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .diff-item .diff-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      margin-bottom: 0.5rem;
+    }
+
+    .diff-item p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .diff-item strong {
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .why-grid,
+      .diff-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ---- CLINICAL FRAMEWORK ---- */
     .clinical-section {
       max-width: 1100px;
@@ -1357,7 +1423,8 @@
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
       padding: 0.75rem 1rem;
       background: #FFFFFF;
@@ -1369,8 +1436,18 @@
       transition: border-color 0.2s;
     }
 
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
     .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .form-group select:focus {
       outline: none;
       border-color: var(--accent);
     }
@@ -1384,6 +1461,28 @@
       width: 100%;
       text-align: center;
       margin-top: 0.5rem;
+    }
+
+    .testimonial {
+      max-width: 600px;
+      margin: 2rem auto 2.5rem;
+      text-align: center;
+      border: none;
+      padding: 0;
+    }
+
+    .testimonial p {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .testimonial cite {
+      font-size: 0.85rem;
+      font-style: normal;
+      color: var(--text-tertiary);
     }
 
     .credibility-bar {
@@ -1544,12 +1643,12 @@
       <div class="hero-bg"></div>
       <div class="hero-content">
         <div class="hero-label">Digital Narrative Therapy</div>
-        <h1>Stories made visible. Progress made measurable.</h1>
-        <p class="hero-problem">What patients share in therapy is powerful — but it stays internal. There's no way to see it, hold it, or return to it.</p>
-        <p>StoryCare changes that. It turns what someone shares into images, music, and film they keep — co-created with their therapist, built from their own words.</p>
+        <h1>Therapy generates conversation. StoryCare turns it into something the patient keeps.</h1>
+        <p class="hero-problem">What patients share in session is powerful, but it stays invisible. There's nothing to return to, reflect on, or build from between visits.</p>
+        <p>StoryCare changes that. From a single session, the platform generates images, music, and video the patient takes home. The therapist controls everything. The patient engages between sessions. Progress becomes visible and measurable.</p>
         <div class="hero-ctas">
-          <a href="#how-it-works" class="btn-primary">Learn More</a>
-          <a href="#research" class="btn-ghost">Request Access &rarr;</a>
+          <a href="#how-it-works" class="btn-primary">See How It Works</a>
+          <a href="#research" class="btn-ghost">Join the Pilot &rarr;</a>
         </div>
       </div>
     </section>
@@ -1671,10 +1770,10 @@
           <h2 class="section-title">Images, music, and reflection. Generated from the session.</h2>
           <p>Each Story Page is generated from a therapy session. It includes a short video, original music, images, reflection prompts, and survey questions. The patient receives it and engages with it between sessions.</p>
           <div class="sp-features">
-            <div class="sp-feature"><strong>AI Images</strong><span>Generated from the session narrative and animated into video with transitions and subtitles</span></div>
-            <div class="sp-feature"><strong>Original Music</strong><span>Composed to match the emotional arc of each story. New music every time.</span></div>
-            <div class="sp-feature"><strong>Reflection Prompts</strong><span>Clinician-selected prompts that connect session themes to daily life</span></div>
-            <div class="sp-feature"><strong>Outcome Surveys</strong><span>Validated measures, engagement tracking, and emotional signals per patient per module</span></div>
+            <div class="sp-feature"><strong>AI Images + Video</strong><span>The patient sees their story reflected back visually. Something concrete to hold onto between sessions.</span></div>
+            <div class="sp-feature"><strong>Original Music</strong><span>Each story gets its own score. Patients return to it. It becomes part of their relationship with the work.</span></div>
+            <div class="sp-feature"><strong>Reflection Prompts</strong><span>Therapist-guided questions that keep the session alive between visits. Patients respond on their own time.</span></div>
+            <div class="sp-feature"><strong>Outcome Surveys</strong><span>Clinicians see how patients are responding, what they engage with, and where things shift over time.</span></div>
           </div>
         </div>
       </div>
@@ -1859,6 +1958,56 @@
       </div>
     </section>
 
+    <!-- Why It Works + How It's Different -->
+    <section id="why-it-works">
+      <div class="why-section">
+        <div class="section-label">Why It Works</div>
+        <h2 class="section-title">The media isn't the outcome. It's what makes outcomes visible.</h2>
+        <p class="section-subtitle">The hardest thing about therapy is that progress happens in conversation and then disappears. StoryCare captures what matters, turns it into something the patient can return to, and measures what happens next.</p>
+
+        <div class="why-grid">
+          <div class="why-block">
+            <h3>Between sessions, patients have something to come back to</h3>
+            <p>AI-generated images, music, and video give patients a concrete anchor. Not homework. Not a worksheet. Something personal they choose to engage with on their own time.</p>
+          </div>
+          <div class="why-block">
+            <h3>Engagement becomes measurable</h3>
+            <p>When patients view their Story Page, respond to reflection prompts, or complete outcome surveys, clinicians see it. Not a guess about whether the patient "did the work" between visits. Actual signal.</p>
+          </div>
+          <div class="why-block">
+            <h3>Clinicians see what's landing and what isn't</h3>
+            <p>Which stories do patients revisit? Which prompts get the longest responses? Where does engagement drop? The platform surfaces patterns that inform the next session.</p>
+          </div>
+          <div class="why-block">
+            <h3>The therapeutic record grows over time</h3>
+            <p>Each module adds to a patient's Story Page. Over weeks and months, what started as a single session becomes a visible arc of progress. Patients see how far they've come. So do their clinicians.</p>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 4rem;">How StoryCare is different</h2>
+        <p class="section-subtitle">StoryCare isn't a documentation tool, a chatbot, or a standalone app. It's a clinical platform that creates from therapy sessions and measures what patients do with what it creates.</p>
+
+        <div class="diff-grid">
+          <div class="diff-item">
+            <div class="diff-label">vs. AI Scribes</div>
+            <p>Scribes document what happened. <strong>StoryCare creates from what happened.</strong> The output isn't a note for the chart. It's media the patient takes home and engages with.</p>
+          </div>
+          <div class="diff-item">
+            <div class="diff-label">vs. Digital Journaling Apps</div>
+            <p>Apps like Woebot and Wysa are self-guided. <strong>StoryCare is clinician-guided.</strong> The therapist controls what gets published. The patient engages with content shaped by their treatment.</p>
+          </div>
+          <div class="diff-item">
+            <div class="diff-label">vs. Expressive Arts Therapy</div>
+            <p>Expressive arts happen in session and stay there. <strong>StoryCare extends beyond the session.</strong> AI generates media from the conversation, and the patient carries it forward between visits.</p>
+          </div>
+          <div class="diff-item">
+            <div class="diff-label">vs. EHR Tools</div>
+            <p>EHRs are administrative. They track billing, notes, and compliance. <strong>StoryCare is therapeutic.</strong> It tracks what patients create, engage with, and how they respond over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Clinical Framework -->
     <section id="clinical">
       <div class="clinical-section">
@@ -1866,8 +2015,8 @@
         <h2 class="section-title">Grounded in evidence. Structured for scale.</h2>
         <div class="clinical-grid">
           <div class="clinical-text">
-            <p>StoryCare delivers Digital Narrative Therapy, a structured protocol that uses narrative restructuring, creative expression, and group process to help patients externalize, reshape, and reclaim their stories. The default protocol runs 8 modules over roughly 4 months, but the platform adapts to shorter or longer engagements, individual or group formats, and a range of clinical populations.</p>
-            <p>It's transdiagnostic: PTSD, schizophrenia-spectrum conditions, substance use disorders, depression, and anxiety. The digital layer records, transcribes, generates media, and captures outcomes at every step.</p>
+            <p>Patients move through a structured sequence: from safety and orientation, through narrative development, to meaning-making and integration. At each step, they create something, reflect on it, and carry it forward. The default protocol runs 8 modules over roughly 4 months, but it adapts to shorter or longer engagements, individual or group formats.</p>
+            <p>Designed for multiple populations: PTSD, schizophrenia-spectrum conditions, substance use disorders, depression, and anxiety. The platform records, transcribes, generates media, and captures outcomes at every step.</p>
           </div>
           <div>
             <ul class="modules-list">
@@ -1924,6 +2073,41 @@
           </button>
           <div class="faq-answer"><div class="faq-answer-inner">StoryCare was built around Digital Narrative Therapy, but the core tools — transcription, media generation, Story Pages, and outcome tracking — can support other structured therapeutic approaches.</div></div>
         </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            What does StoryCare cost?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">StoryCare is built to be a cost-effective treatment model. Pricing depends on your setting, number of providers, and patient volume. Reach out and we'll walk through it with you.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            How long does setup take?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Setup is straightforward for individual clinicians or organizations. The platform is multi-tenant with admin roles, provider management, and configurable protocols. We work with each site to tailor the rollout to their workflow.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            What training is needed?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Minimal. Most clinicians are comfortable with the platform in under two hours. StoryCare was designed for therapists, not technologists. If you can run a session, you can use the tools.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            What data and outcomes can I see?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">The platform captures patient engagement (views, time spent, prompt responses), outcome survey results, session transcripts, and media interaction patterns. Our clinical trial is currently in progress, and we're building the evidence base for how these signals connect to therapeutic outcomes.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Is StoryCare FDA-cleared?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">StoryCare is currently in clinical evaluation. We're transparent about where we are: building the evidence, running pilots, and working toward regulatory milestones. We'll share results as they come.</div></div>
+        </div>
       </div>
     </section>
 
@@ -1933,6 +2117,30 @@
         <div class="section-label">Research &amp; Access</div>
         <h2 class="section-title">In clinical evaluation. Open to early adopters.</h2>
         <p class="section-subtitle">We're working with clinicians who believe AI can do more than automate notes. If you're running groups, individual therapy, or research — we'd like to hear from you.</p>
+
+        <!-- Credibility Bar -->
+        <div class="credibility-bar" style="margin-top: 2rem;">
+          <div class="credibility-bar-inner">
+            <div class="credibility-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>Built by clinicians with ❤️</span>
+            </div>
+            <div class="credibility-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+              <span><a href="https://shcare.com" target="_blank" rel="noopener">In collaboration with Sage Health</a></span>
+            </div>
+            <div class="credibility-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span><a href="https://schizophreniaresearchsociety.org/" target="_blank" rel="noopener">Presenting at SIRS 2026 in Florence — Schizophrenia Research in the Era of AI</a></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinician Testimonial -->
+        <blockquote class="testimonial">
+          <p>"Most digital tools ask patients to do something outside of therapy. StoryCare creates something from therapy. That's the difference my patients actually respond to."</p>
+          <cite>Clinician in the StoryCare pilot</cite>
+        </blockquote>
 
         <form class="contact-form" id="storycare-contact" novalidate>
           <div class="form-group">
@@ -1944,34 +2152,26 @@
             <input type="email" id="contact-email" name="q3_emailAddress" placeholder="you@example.com" autocomplete="email" required>
           </div>
           <div class="form-group">
+            <label for="contact-role">I'm a...</label>
+            <select id="contact-role" name="q5_role">
+              <option value="" disabled selected>Select one</option>
+              <option value="clinician">Individual clinician</option>
+              <option value="organization">Clinical director / organization</option>
+              <option value="researcher">Researcher</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="contact-message">Tell us about your setting or interest</label>
             <textarea id="contact-message" name="q4_message" placeholder="Clinical setting, population, research interest..." required></textarea>
           </div>
-          <button type="submit" class="btn-primary">Request Access</button>
+          <button type="submit" class="btn-primary">Talk to the Team</button>
           <p class="form-status" id="form-status" style="display:none; margin-top:1rem; font-size:0.9rem;"></p>
         </form>
 
       </div>
     </section>
   </main>
-
-  <!-- Credibility Bar -->
-  <div class="credibility-bar">
-    <div class="credibility-bar-inner">
-      <div class="credibility-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        <span>Built by clinicians with ❤️</span>
-      </div>
-      <div class="credibility-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
-        <span><a href="https://shcare.com" target="_blank" rel="noopener">In collaboration with Sage Health</a></span>
-      </div>
-      <div class="credibility-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span><a href="https://schizophreniaresearchsociety.org/" target="_blank" rel="noopener">Presenting at SIRS 2026 in Florence — Schizophrenia Research in the Era of AI</a></span>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer>
@@ -2021,7 +2221,7 @@
         status.style.display = 'block';
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Request Access';
+        btn.textContent = 'Talk to the Team';
       }
     });
   </script>
