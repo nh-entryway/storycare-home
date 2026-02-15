@@ -385,103 +385,109 @@
     }
 
     .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      display: flex;
+      align-items: flex-start;
       margin-top: 3rem;
       position: relative;
-      counter-reset: step-counter;
     }
 
     .step {
+      flex: 1;
       text-align: center;
-      padding: 0 1.5rem;
       position: relative;
-      counter-increment: step-counter;
+      padding: 0 1rem;
     }
 
-    /* Arrow connector between steps */
-    .step:not(:last-child)::after {
+    /* Connector line between step nodes */
+    .step:not(:last-child) .step-node::after {
       content: '';
       position: absolute;
-      top: 28px;
-      right: -12px;
-      width: 24px;
-      height: 24px;
-      border-right: 2px solid var(--accent);
-      border-top: 2px solid var(--accent);
-      transform: rotate(45deg);
-      opacity: 0.3;
+      top: 50%;
+      left: calc(50% + 24px);
+      width: calc(100% - 48px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), rgba(152, 16, 250, 0.25));
+      transform: translateY(-50%);
+      z-index: 0;
     }
 
-    .step-number {
-      display: inline-flex;
+    .step-node {
+      position: relative;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1.25rem;
       border-radius: 50%;
       background: var(--accent);
       color: #fff;
       font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin: 0 auto 0.75rem;
-      line-height: 1;
-    }
-
-    .step-icon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 1.25rem;
-      border-radius: 50%;
-      background: var(--accent-glow);
-      border: 1px solid rgba(152, 16, 250, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .step-icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: var(--accent);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      font-size: 1.1rem;
+      font-weight: 700;
+      z-index: 1;
+      box-shadow: 0 0 0 6px rgba(152, 16, 250, 0.12);
     }
 
     .step h3 {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 600;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     .step p {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      line-height: 1.65;
+      line-height: 1.6;
+      max-width: 220px;
+      margin: 0 auto;
     }
 
     @media (max-width: 768px) {
       .steps {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem 0;
-      }
-      .step:not(:last-child)::after {
-        display: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .steps {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
       }
       .step {
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
         padding: 0;
+        width: 100%;
+        max-width: 380px;
+        gap: 1.25rem;
+        position: relative;
+      }
+      .step:not(:last-child) {
+        padding-bottom: 2.5rem;
+      }
+      /* Vertical connector on mobile */
+      .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 48px;
+        left: 23px;
+        width: 2px;
+        height: calc(100% - 48px);
+        background: linear-gradient(180deg, var(--accent), rgba(152, 16, 250, 0.15));
+      }
+      .step:not(:last-child) .step-node::after {
+        display: none;
+      }
+      .step-node {
+        flex-shrink: 0;
+        margin: 0;
+        width: 48px;
+        height: 48px;
+      }
+      .step-content {
+        padding-top: 0.35rem;
+      }
+      .step p {
+        max-width: none;
+        margin: 0;
       }
     }
 
@@ -1828,28 +1834,32 @@
         <p class="section-subtitle" style="margin: 0.25rem auto 0.5rem; text-align: center;">Something the patient revisits and builds on between sessions.</p>
         <div class="steps">
           <div class="step fade-in-child">
-            <div class="step-number">1</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
-            <h3>Share</h3>
-            <p>The patient tells their story. StoryCare captures audio, transcript, and speaker identity.</p>
+            <div class="step-node">1</div>
+            <div class="step-content">
+              <h3>Share</h3>
+              <p>The patient tells their story. StoryCare captures audio, transcript, and speaker identity.</p>
+            </div>
           </div>
           <div class="step fade-in-child">
-            <div class="step-number">2</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></div>
-            <h3>Shape</h3>
-            <p>The therapist selects the moments that matter and guides what gets created.</p>
+            <div class="step-node">2</div>
+            <div class="step-content">
+              <h3>Shape</h3>
+              <p>The therapist selects the moments that matter and guides what gets created.</p>
+            </div>
           </div>
           <div class="step fade-in-child">
-            <div class="step-number">3</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-            <h3>Create</h3>
-            <p>StoryCare generates images, video, and original music. Every Story Page is unique.</p>
+            <div class="step-node">3</div>
+            <div class="step-content">
+              <h3>Create</h3>
+              <p>StoryCare generates images, video, and original music. Every Story Page is unique.</p>
+            </div>
           </div>
           <div class="step fade-in-child">
-            <div class="step-number">4</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-            <h3>Respond</h3>
-            <p>The patient engages between sessions with reflection prompts, surveys, and the media itself.</p>
+            <div class="step-node">4</div>
+            <div class="step-content">
+              <h3>Respond</h3>
+              <p>The patient engages between sessions with reflection prompts, surveys, and the media itself.</p>
+            </div>
           </div>
         </div>
       </div>
