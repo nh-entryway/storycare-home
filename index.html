@@ -271,6 +271,34 @@
       color: var(--text-primary);
     }
 
+    @media (max-width: 600px) {
+      .hero {
+        min-height: auto;
+        padding: 6rem 1.5rem 3rem;
+      }
+      .hero-brand {
+        font-size: 2.6rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-ghost {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+      }
+    }
+
     /* ---- TRUST BAR ---- */
     .trust-bar {
       background: rgba(0, 0, 0, 0.02);
@@ -1275,21 +1303,26 @@
         font-size: 1.6rem;
       }
       .story-card {
-        width: 220px;
+        width: 240px;
       }
       .story-card img {
-        height: 220px;
+        height: 240px;
       }
       .stories-track {
         gap: 1rem;
+        padding: 0 1rem;
       }
       .stories-scroll-wrapper::before,
       .stories-scroll-wrapper::after {
-        width: 30px;
-      }
-      .stories-nav {
         display: none;
       }
+      .stories-nav {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+      .stories-nav--prev { left: 0.25rem; }
+      .stories-nav--next { right: 0.25rem; }
     }
 
     /* ---- WHY IT WORKS / DIFFERENTIATION ---- */
