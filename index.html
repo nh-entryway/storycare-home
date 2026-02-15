@@ -1334,15 +1334,16 @@
     .why-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
+      gap: 2rem 3rem;
       margin-top: 2.5rem;
     }
 
     .why-block-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(152, 16, 250, 0.08);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent-glow);
+      border: 1px solid rgba(152, 16, 250, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1350,10 +1351,10 @@
     }
 
     .why-block-icon svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       stroke: var(--accent);
-      stroke-width: 1.8;
+      stroke-width: 1.5;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -1801,8 +1802,9 @@
     <!-- How It Works -->
     <section id="how-it-works">
       <div class="how-it-works fade-in">
-        <h2 class="section-title">From session to Story Page.</h2>
-        <p class="section-subtitle" style="margin: 0 auto 0.5rem; text-align: center;">Something the patient keeps, returns to, and builds on.</p>
+        <h2 class="section-title">From session to shared narrative</h2>
+        <p class="section-subtitle" style="margin: 0 auto; text-align: center;">Selected moments from therapy become a structured Story Page built from the patient's own language.</p>
+        <p class="section-subtitle" style="margin: 0.25rem auto 0.5rem; text-align: center;">Something the patient revisits and builds on between sessions.</p>
         <div class="steps">
           <div class="step fade-in-child">
             <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
