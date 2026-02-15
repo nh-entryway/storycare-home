@@ -1166,45 +1166,79 @@
       .tv-panel:last-child { border-bottom: none; }
     }
 
-    /* ---- STORIES GRID ---- */
+    /* ---- STORIES SCROLL ---- */
     .stories-section {
       max-width: 1100px;
       margin: 0 auto;
       text-align: center;
     }
 
-    .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+    .stories-scroll-wrapper {
+      overflow: hidden;
       margin-top: 3rem;
+      position: relative;
+    }
+
+    .stories-scroll-wrapper::before,
+    .stories-scroll-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 60px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .stories-scroll-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, #FAF8FF, transparent);
+    }
+
+    .stories-scroll-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, #FAF8FF, transparent);
+    }
+
+    .stories-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: stories-scroll 35s linear infinite;
+      width: max-content;
+    }
+
+    .stories-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes stories-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .story-card {
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      aspect-ratio: 1;
+      width: 280px;
+      flex-shrink: 0;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     }
 
     .story-card img {
       width: 100%;
-      height: 100%;
+      height: 280px;
       object-fit: cover;
       display: block;
     }
 
-    @media (max-width: 900px) {
-      .stories-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 520px) {
-      .stories-grid {
-        grid-template-columns: 1fr;
-      }
+    .story-card figcaption {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: #555;
+      text-align: left;
+      background: #fff;
+      line-height: 1.4;
     }
 
     /* ---- WHY IT WORKS / DIFFERENTIATION ---- */
@@ -1922,26 +1956,59 @@
     <section id="stories">
       <div class="stories-section fade-in">
         <div class="section-label">From the Pilot</div>
-        <h2 class="section-title">Loss, recovery, identity, change. Made visible.</h2>
-        <p class="section-subtitle" style="margin:0 auto">StoryCare is helping patients see their own stories.</p>
-        <div class="stories-grid">
-          <div class="story-card">
-            <img src="images/story-1.jpg" alt="AI-generated image from a therapy session" loading="lazy">
-          </div>
-          <div class="story-card">
-            <img src="images/story-2.jpg" alt="AI-generated image from a therapy session" loading="lazy">
-          </div>
-          <div class="story-card">
-            <img src="images/story-3.jpg" alt="AI-generated image from a therapy session" loading="lazy">
-          </div>
-          <div class="story-card">
-            <img src="images/story-4.jpg" alt="AI-generated image from a therapy session" loading="lazy">
-          </div>
-          <div class="story-card">
-            <img src="images/story-5.jpg" alt="AI-generated image from a therapy session" loading="lazy">
-          </div>
-          <div class="story-card">
-            <img src="images/story-6.jpg" alt="AI-generated image from a therapy session" loading="lazy">
+        <h2 class="section-title">Every image comes from a real session.</h2>
+        <p class="section-subtitle" style="margin:0 auto">Created by StoryCare during pilot sessions with real patients.</p>
+        <div class="stories-scroll-wrapper">
+          <div class="stories-track">
+            <figure class="story-card">
+              <img src="images/story-1.jpg" alt="Figure on tightrope carrying a glowing heart" loading="lazy">
+              <figcaption>Carrying what matters through the worst of it</figcaption>
+            </figure>
+            <figure class="story-card">
+              <img src="images/story-2.jpg" alt="Blindfolded figure reaching toward a doorway" loading="lazy">
+              <figcaption>Finding the way forward without seeing it yet</figcaption>
+            </figure>
+            <figure class="story-card">
+              <img src="images/story-3.jpg" alt="Man releasing an eagle" loading="lazy">
+              <figcaption>Letting go of what no longer serves</figcaption>
+            </figure>
+            <figure class="story-card">
+              <img src="images/story-4.jpg" alt="Child holding photos facing a caged figure" loading="lazy">
+              <figcaption>Memory as protection</figcaption>
+            </figure>
+            <figure class="story-card">
+              <img src="images/story-5.jpg" alt="Silhouette facing a figure rising from fire" loading="lazy">
+              <figcaption>Facing what's been buried</figcaption>
+            </figure>
+            <figure class="story-card">
+              <img src="images/story-6.jpg" alt="Figure sitting in stillness inside a spiral of light" loading="lazy">
+              <figcaption>Learning to be still</figcaption>
+            </figure>
+            <!-- Duplicate set for seamless loop -->
+            <figure class="story-card" aria-hidden="true">
+              <img src="images/story-1.jpg" alt="" loading="lazy">
+              <figcaption>Carrying what matters through the worst of it</figcaption>
+            </figure>
+            <figure class="story-card" aria-hidden="true">
+              <img src="images/story-2.jpg" alt="" loading="lazy">
+              <figcaption>Finding the way forward without seeing it yet</figcaption>
+            </figure>
+            <figure class="story-card" aria-hidden="true">
+              <img src="images/story-3.jpg" alt="" loading="lazy">
+              <figcaption>Letting go of what no longer serves</figcaption>
+            </figure>
+            <figure class="story-card" aria-hidden="true">
+              <img src="images/story-4.jpg" alt="" loading="lazy">
+              <figcaption>Memory as protection</figcaption>
+            </figure>
+            <figure class="story-card" aria-hidden="true">
+              <img src="images/story-5.jpg" alt="" loading="lazy">
+              <figcaption>Facing what's been buried</figcaption>
+            </figure>
+            <figure class="story-card" aria-hidden="true">
+              <img src="images/story-6.jpg" alt="" loading="lazy">
+              <figcaption>Learning to be still</figcaption>
+            </figure>
           </div>
         </div>
       </div>
