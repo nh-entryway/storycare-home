@@ -1338,6 +1338,27 @@
       margin-top: 2.5rem;
     }
 
+    .why-block-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(152, 16, 250, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .why-block-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--accent);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .why-block h3 {
       font-size: 1.1rem;
       font-weight: 600;
@@ -2078,20 +2099,35 @@
     <section id="why-it-works">
       <div class="why-section fade-in">
         <div class="section-label">Why It Works</div>
-        <h2 class="section-title">A shared view of progress.</h2>
 
         <div class="why-grid">
           <div class="why-block fade-in-child">
-            <h3>Something to return to</h3>
-            <p>Patients get a personal anchor between sessions. Not homework. Something they choose to engage with.</p>
+            <div class="why-block-icon">
+              <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </div>
+            <h3>Externalization builds agency</h3>
+            <p>Turning experience into narrative and image helps patients see problems as separate from identity.</p>
           </div>
           <div class="why-block fade-in-child">
-            <h3>Engagement you can see</h3>
-            <p>Clinicians see when patients view their Story Page, respond to prompts, and complete surveys. Real signal, not guesswork.</p>
+            <div class="why-block-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Reflection deepens integration</h3>
+            <p>Revisiting structured narrative between sessions strengthens insight and memory consolidation.</p>
           </div>
           <div class="why-block fade-in-child">
-            <h3>Patterns that inform treatment</h3>
-            <p>Which stories get revisited? Where does engagement shift? StoryCare surfaces what matters for the next session.</p>
+            <div class="why-block-icon">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3>Symbolic media expands processing</h3>
+            <p>Visual and auditory media engage emotional systems beyond verbal dialogue.</p>
+          </div>
+          <div class="why-block fade-in-child">
+            <div class="why-block-icon">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Visible engagement informs care</h3>
+            <p>Patterns of return, response, and reflection provide real signal for the next session.</p>
           </div>
         </div>
       </div>
