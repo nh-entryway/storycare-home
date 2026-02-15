@@ -1378,37 +1378,55 @@
       margin-top: 0.5rem;
     }
 
-    .credibility {
-      font-size: 0.9rem;
+    .credibility-bar {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2rem;
+      margin-top: 0;
+    }
+
+    .credibility-bar-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .credibility-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
       color: var(--text-secondary);
-      margin-top: 2.5rem;
-      line-height: 1.6;
+      letter-spacing: 0.02em;
     }
 
-    .credibility a {
-      color: var(--text-primary);
-      text-decoration: underline;
-      text-underline-offset: 2px;
+    .credibility-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent);
+      opacity: 0.7;
+      flex-shrink: 0;
     }
 
-    .credibility a:hover {
-      color: var(--accent);
-    }
-
-    .conference-note {
-      font-size: 0.85rem;
-      color: var(--text-tertiary);
-      margin-top: 0.75rem;
-      line-height: 1.6;
-    }
-
-    .conference-note a {
-      color: var(--accent);
+    .credibility-item a {
+      color: var(--text-secondary);
       text-decoration: none;
+      transition: color 0.2s;
     }
 
-    .conference-note a:hover {
-      text-decoration: underline;
+    .credibility-item a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 520px) {
+      .credibility-bar-inner {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+      }
     }
 
     .hipaa-line {
@@ -1922,11 +1940,27 @@
           <p class="form-status" id="form-status" style="display:none; margin-top:1rem; font-size:0.9rem;"></p>
         </form>
 
-        <p class="credibility">Designed and developed by Noah Hendler, PMHNP-BC, FNP-C. In collaboration with <a href="https://shcare.com/leadership/" target="_blank" rel="noopener">Sage Health</a>.</p>
-        <p class="conference-note">Presenting at the <a href="https://schizophreniaresearchsociety.org/" target="_blank" rel="noopener">Schizophrenia International Research Society Conference (SIRS 2026)</a> in Florence, Italy, March 25&ndash;29. This year's theme: Schizophrenia Research in the Era of Artificial Intelligence.</p>
       </div>
     </section>
   </main>
+
+  <!-- Credibility Bar -->
+  <div class="credibility-bar">
+    <div class="credibility-bar-inner">
+      <div class="credibility-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span>Built in clinical practice</span>
+      </div>
+      <div class="credibility-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+        <span><a href="https://shcare.com" target="_blank" rel="noopener">In collaboration with Sage Health</a></span>
+      </div>
+      <div class="credibility-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><a href="https://schizophreniaresearchsociety.org/" target="_blank" rel="noopener">Presenting in Florence, March 2026</a></span>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
