@@ -131,7 +131,12 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: 4px;
+      padding: 10px;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .nav-toggle span {
@@ -375,6 +380,12 @@
       section {
         padding: 4rem 1.25rem;
       }
+      .section-title {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+      }
+      .section-subtitle {
+        font-size: 0.95rem;
+      }
     }
 
     /* ---- HOW IT WORKS ---- */
@@ -382,6 +393,16 @@
       max-width: 1100px;
       margin: 0 auto;
       text-align: center;
+    }
+
+    .how-it-works .section-subtitle {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .how-it-works .section-subtitle + .section-subtitle {
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
     }
 
     .steps {
@@ -505,9 +526,14 @@
       .storypage {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2.5rem;
       }
       .storypage .sp-text {
         order: -1;
+        max-width: none;
+      }
+      .storypage .section-subtitle {
+        margin: 0 auto;
       }
       .phone-frame {
         margin: 0 auto;
@@ -1234,6 +1260,10 @@
       text-align: center;
     }
 
+    .stories-section .section-subtitle {
+      margin: 0 auto;
+    }
+
     .stories-scroll-wrapper {
       overflow: hidden;
       margin-top: 3rem;
@@ -1402,6 +1432,10 @@
       margin: 0 auto;
     }
 
+    .clinical-section .section-subtitle {
+      margin-bottom: 1.5rem;
+    }
+
     .clinical-grid {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
@@ -1514,7 +1548,7 @@
     }
 
     .faq-item.open .faq-answer {
-      max-height: 300px;
+      max-height: 500px;
     }
 
     /* ---- RESEARCH & CONTACT ---- */
@@ -1559,7 +1593,7 @@
       border-radius: 8px;
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 0.9rem;
+      font-size: 1rem;
       transition: border-color 0.2s;
     }
 
@@ -1614,7 +1648,7 @@
 
     .credibility-bar {
       padding: 2rem 2rem;
-      margin-top: 0;
+      margin-top: 2rem;
     }
 
     .credibility-bar-inner {
@@ -1662,6 +1696,11 @@
         gap: 1rem;
         flex-direction: column;
         align-items: center;
+      }
+      .credibility-item {
+        text-align: center;
+        justify-content: center;
+        max-width: 280px;
       }
     }
 
@@ -1744,6 +1783,45 @@
       stroke: var(--accent);
     }
 
+    @media (max-width: 768px) {
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+    }
+
+    /* ---- ACCESSIBILITY & TOUCH ---- */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    a, button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .faq-question {
+      min-height: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+
     /* Scroll-triggered fade-in (only activates when JS is ready) */
     .js-fade-ready .fade-in {
       opacity: 0;
@@ -1820,8 +1898,8 @@
     <section id="how-it-works">
       <div class="how-it-works fade-in">
         <h2 class="section-title">From session to shared narrative</h2>
-        <p class="section-subtitle" style="margin: 0 auto; text-align: center;">Selected moments from therapy become a structured Story Page built from the patient's own language.</p>
-        <p class="section-subtitle" style="margin: 0.25rem auto 0.5rem; text-align: center;">Something the patient revisits and builds on between sessions.</p>
+        <p class="section-subtitle">Selected moments from therapy become a structured Story Page built from the patient's own language.</p>
+        <p class="section-subtitle">Something the patient revisits and builds on between sessions.</p>
         <div class="steps">
           <div class="step fade-in-child">
             <div class="step-node">1</div>
@@ -2088,7 +2166,7 @@
       <div class="stories-section fade-in">
         <div class="section-label">From the Pilot</div>
         <h2 class="section-title">StoryCare helps patients externalize internal experiences.</h2>
-        <p class="section-subtitle" style="margin:0 auto">These stories were created during group sessions as part of the initial pilot.</p>
+        <p class="section-subtitle">These stories were created during group sessions as part of the initial pilot.</p>
         <div class="stories-scroll-wrapper">
           <button class="stories-nav stories-nav--prev" aria-label="Previous stories">&#8249;</button>
           <button class="stories-nav stories-nav--next" aria-label="Next stories">&#8250;</button>
@@ -2126,6 +2204,7 @@
     <section id="why-it-works">
       <div class="why-section fade-in">
         <div class="section-label">Why It Works</div>
+        <h2 class="section-title">Grounded in how therapy works.</h2>
 
         <div class="why-grid">
           <div class="why-block fade-in-child">
@@ -2153,7 +2232,7 @@
       <div class="clinical-section fade-in">
         <div class="section-label">Clinical Framework</div>
         <h2 class="section-title">A flexible structure the clinician leads.</h2>
-        <p class="section-subtitle" style="margin-bottom: 1.5rem;">Eight modules. Individual or group. Measurement built in.</p>
+        <p class="section-subtitle">Eight modules. Individual or group. Measurement built in.</p>
         <div class="clinical-grid">
           <div class="clinical-text">
             <p>Patients move through a structured sequence: from safety and orientation, through narrative development, to meaning-making and integration. At each step, they create something, reflect on it, and carry it forward. The default protocol is 8 modules. It adapts to individual or group formats.</p>
@@ -2260,7 +2339,7 @@
         <p class="section-subtitle">We're looking for clinicians who want to create something new with their patients. If you're running groups, individual therapy, or research, we'd like to hear from you.</p>
 
         <!-- Credibility Bar -->
-        <div class="credibility-bar" style="margin-top: 2rem;">
+        <div class="credibility-bar">
           <div class="credibility-bar-inner">
             <div class="credibility-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
