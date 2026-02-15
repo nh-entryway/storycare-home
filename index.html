@@ -1421,12 +1421,15 @@
 
     .credibility-item a {
       color: var(--text-primary);
-      text-decoration: none;
-      transition: color 0.2s;
+      text-decoration: underline;
+      text-decoration-color: rgba(0, 0, 0, 0.2);
+      text-underline-offset: 2px;
+      transition: color 0.2s, text-decoration-color 0.2s;
     }
 
     .credibility-item a:hover {
       color: var(--accent);
+      text-decoration-color: var(--accent);
     }
 
     @media (max-width: 520px) {
@@ -1681,8 +1684,8 @@
     <section id="therapist">
       <div class="therapist-section">
         <div class="section-label">The Therapist's Workspace</div>
-        <h2 class="section-title">Review, refine, and publish. The clinician controls everything.</h2>
-        <p class="section-subtitle">The therapist works from a session transcript on the left, an AI assistant in the center, and a media library on the right. Every image, video, and music track is generated from what the patient shared. The therapist reviews, refines, and publishes. The clinician stays in the loop at every step.</p>
+        <h2 class="section-title">Built for the clinician's workflow. Review, refine, and publish.</h2>
+        <p class="section-subtitle">Clinicians document. StoryCare helps them create. From a single session, the platform generates images, video, and music that the patient takes home and engages with between visits. The therapist reviews and publishes everything.</p>
 
         <div class="therapist-mockup">
           <!-- Panel 1: Transcript -->
@@ -1957,7 +1960,7 @@
     <div class="credibility-bar-inner">
       <div class="credibility-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        <span>Built in clinical practice</span>
+        <span>Built by clinicians with ❤️</span>
       </div>
       <div class="credibility-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
@@ -1965,7 +1968,7 @@
       </div>
       <div class="credibility-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span><a href="https://schizophreniaresearchsociety.org/" target="_blank" rel="noopener">Presenting in Florence, March 2026</a></span>
+        <span><a href="https://schizophreniaresearchsociety.org/" target="_blank" rel="noopener">Presenting at SIRS 2026 in Florence — Schizophrenia Research in the Era of AI</a></span>
       </div>
     </div>
   </div>
