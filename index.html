@@ -1203,7 +1203,7 @@
     .stories-track {
       display: flex;
       gap: 1.5rem;
-      animation: stories-scroll 35s linear infinite;
+      animation: stories-scroll 60s linear infinite;
       width: max-content;
     }
 
@@ -1239,6 +1239,25 @@
       text-align: left;
       background: #fff;
       line-height: 1.4;
+    }
+
+    @media (max-width: 600px) {
+      .stories-section .section-title {
+        font-size: 1.6rem;
+      }
+      .story-card {
+        width: 220px;
+      }
+      .story-card img {
+        height: 220px;
+      }
+      .stories-track {
+        gap: 1rem;
+      }
+      .stories-scroll-wrapper::before,
+      .stories-scroll-wrapper::after {
+        width: 30px;
+      }
     }
 
     /* ---- WHY IT WORKS / DIFFERENTIATION ---- */
