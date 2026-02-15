@@ -224,8 +224,8 @@
     }
 
     .hero p {
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      color: var(--text-secondary);
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      color: var(--text-primary);
       line-height: 1.7;
       max-width: 620px;
       margin: 0 auto 2.5rem;
@@ -1209,20 +1209,20 @@
     .stories-track {
       display: flex;
       gap: 1.5rem;
-      animation: stories-scroll 60s linear infinite;
-      width: max-content;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0 2rem;
     }
-
-    .stories-track:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes stories-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .stories-track::-webkit-scrollbar {
+      display: none;
     }
 
     .story-card {
+      scroll-snap-align: start;
       position: relative;
       border-radius: 16px;
       overflow: hidden;
@@ -1247,6 +1247,29 @@
       line-height: 1.4;
     }
 
+    .stories-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #333;
+      transition: opacity 0.2s;
+    }
+    .stories-nav:hover { background: #fff; }
+    .stories-nav--prev { left: 0.5rem; }
+    .stories-nav--next { right: 0.5rem; }
+
     @media (max-width: 600px) {
       .stories-section .section-title {
         font-size: 1.6rem;
@@ -1263,6 +1286,9 @@
       .stories-scroll-wrapper::before,
       .stories-scroll-wrapper::after {
         width: 30px;
+      }
+      .stories-nav {
+        display: none;
       }
     }
 
@@ -1830,7 +1856,7 @@
     <section id="therapist">
       <div class="therapist-section fade-in">
         <div class="section-label">The Therapist's Workspace</div>
-        <h2 class="section-title">From transcript to media to Story Page.</h2>
+        <h2 class="section-title">Create, share and transform patient's stories.</h2>
         <p class="section-subtitle">The therapist controls every step.</p>
 
         <div class="therapist-mockup">
@@ -1980,9 +2006,11 @@
     <section id="stories">
       <div class="stories-section fade-in">
         <div class="section-label">From the Pilot</div>
-        <h2 class="section-title">Every image comes from a real session.</h2>
-        <p class="section-subtitle" style="margin:0 auto">Created by StoryCare during pilot sessions with real patients.</p>
+        <h2 class="section-title">StoryCare helps patients externalize internal experiences.</h2>
+        <p class="section-subtitle" style="margin:0 auto">These stories were created during group sessions as part of the initial pilot.</p>
         <div class="stories-scroll-wrapper">
+          <button class="stories-nav stories-nav--prev" aria-label="Previous stories">&#8249;</button>
+          <button class="stories-nav stories-nav--next" aria-label="Next stories">&#8250;</button>
           <div class="stories-track">
             <figure class="story-card">
               <img src="images/story-1.jpg" alt="Figure on tightrope carrying a glowing heart" loading="lazy">
@@ -2006,31 +2034,6 @@
             </figure>
             <figure class="story-card">
               <img src="images/story-6.jpg" alt="Figure sitting in stillness inside a spiral of light" loading="lazy">
-              <figcaption>Learning to be still</figcaption>
-            </figure>
-            <!-- Duplicate set for seamless loop -->
-            <figure class="story-card" aria-hidden="true">
-              <img src="images/story-1.jpg" alt="" loading="lazy">
-              <figcaption>Carrying what matters through the worst of it</figcaption>
-            </figure>
-            <figure class="story-card" aria-hidden="true">
-              <img src="images/story-2.jpg" alt="" loading="lazy">
-              <figcaption>Finding the way forward without seeing it yet</figcaption>
-            </figure>
-            <figure class="story-card" aria-hidden="true">
-              <img src="images/story-3.jpg" alt="" loading="lazy">
-              <figcaption>Letting go of what no longer serves</figcaption>
-            </figure>
-            <figure class="story-card" aria-hidden="true">
-              <img src="images/story-4.jpg" alt="" loading="lazy">
-              <figcaption>Memory as protection</figcaption>
-            </figure>
-            <figure class="story-card" aria-hidden="true">
-              <img src="images/story-5.jpg" alt="" loading="lazy">
-              <figcaption>Facing what's been buried</figcaption>
-            </figure>
-            <figure class="story-card" aria-hidden="true">
-              <img src="images/story-6.jpg" alt="" loading="lazy">
               <figcaption>Learning to be still</figcaption>
             </figure>
           </div>
@@ -2324,6 +2327,25 @@
             revealElement(fadeEls[i]);
           }
         }
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      var track = document.querySelector('.stories-track');
+      var prev = document.querySelector('.stories-nav--prev');
+      var next = document.querySelector('.stories-nav--next');
+      if (!track || !prev || !next) return;
+      var scrollAmount = function() {
+        var card = track.querySelector('.story-card');
+        if (!card) return 296;
+        return card.offsetWidth + 24;
+      };
+      prev.addEventListener('click', function() {
+        track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+      });
+      next.addEventListener('click', function() {
+        track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
       });
     })();
   </script>
