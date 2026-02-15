@@ -1593,7 +1593,7 @@
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .fade-in.visible {
+    .js-fade-ready .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -1602,7 +1602,7 @@
       transform: translateY(16px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .fade-in-child.visible {
+    .js-fade-ready .fade-in-child.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -1950,7 +1950,7 @@
     <section id="why-it-works">
       <div class="why-section fade-in">
         <div class="section-label">Why It Works</div>
-        <h2 class="section-title">Progress happens in conversation, then disappears. StoryCare makes it stick.</h2>
+        <h2 class="section-title">What the clinician sees. What the patient keeps.</h2>
 
         <div class="why-grid">
           <div class="why-block fade-in-child">
@@ -2203,33 +2203,38 @@
       }
     }
 
-    var fadeEls = document.querySelectorAll('.fade-in');
+    // Wait one frame so the browser applies the opacity:0 styles
+    // before we check positions — prevents getBoundingClientRect from
+    // returning stale layout values.
+    requestAnimationFrame(function() {
+      var fadeEls = document.querySelectorAll('.fade-in');
 
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function(entries) {
-        for (var i = 0; i < entries.length; i++) {
-          if (entries[i].isIntersecting) {
-            revealElement(entries[i].target);
-            observer.unobserve(entries[i].target);
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+              revealElement(entries[i].target);
+              observer.unobserve(entries[i].target);
+            }
+          }
+        }, { threshold: 0.02, rootMargin: '0px 0px 50px 0px' });
+
+        for (var i = 0; i < fadeEls.length; i++) {
+          // If already in viewport, reveal immediately
+          var rect = fadeEls[i].getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            revealElement(fadeEls[i]);
+          } else {
+            observer.observe(fadeEls[i]);
           }
         }
-      }, { threshold: 0.02, rootMargin: '0px 0px 50px 0px' });
-
-      for (var i = 0; i < fadeEls.length; i++) {
-        // If already in viewport, reveal immediately
-        var rect = fadeEls[i].getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
+      } else {
+        // Fallback: no IntersectionObserver, reveal everything
+        for (var i = 0; i < fadeEls.length; i++) {
           revealElement(fadeEls[i]);
-        } else {
-          observer.observe(fadeEls[i]);
         }
       }
-    } else {
-      // Fallback: no IntersectionObserver, reveal everything
-      for (var i = 0; i < fadeEls.length; i++) {
-        revealElement(fadeEls[i]);
-      }
-    }
+    });
   </script>
 </body>
 </html>
