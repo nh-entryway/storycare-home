@@ -2366,7 +2366,7 @@
         <form class="contact-form" id="storycare-contact" novalidate>
           <div class="form-group">
             <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" name="q2_fullName" placeholder="Your name" autocomplete="name" required>
+            <input type="text" id="contact-name" name="q2_fullName[first]" placeholder="Your name" autocomplete="name" required>
           </div>
           <div class="form-group">
             <label for="contact-email">Email</label>
@@ -2374,7 +2374,7 @@
           </div>
           <div class="form-group">
             <label for="contact-role">I'm a...</label>
-            <select id="contact-role" name="q5_role">
+            <select id="contact-role" name="q6_role">
               <option value="" disabled selected>Select one</option>
               <option value="clinician">Individual clinician</option>
               <option value="organization">Clinical director / organization</option>
@@ -2430,7 +2430,7 @@
 
         try {
           var data = new FormData(form);
-          await fetch('https://submit.jotform.com/submit/260444105747051', {
+          await fetch('https://hipaa.jotform.com/submit/260444105747051', {
             method: 'POST',
             body: data,
             mode: 'no-cors'
